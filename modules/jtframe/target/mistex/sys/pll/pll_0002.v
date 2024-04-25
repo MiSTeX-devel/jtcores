@@ -194,7 +194,11 @@ module  pll_0002(
 		altpll_component.clk0_phase_shift = "0",
 		altpll_component.clk1_divide_by = 25,
 		altpll_component.clk1_duty_cycle = 50,
+    `ifdef JTFRAME_SDRAM96
 		altpll_component.clk1_multiply_by = 48,
+    `else
+		altpll_component.clk1_multiply_by = 24,
+    `endif
 		altpll_component.clk1_phase_shift = `SDRAM_SHIFT,
 		altpll_component.clk2_divide_by = 25,
 		altpll_component.clk2_duty_cycle = 50,
