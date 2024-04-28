@@ -122,7 +122,6 @@ module  pll_0002(
 
 `else
 
-
 	`ifndef ALTERA_RESERVED_QIS
 	// synopsys translate_off
 	`endif
@@ -262,54 +261,6 @@ module  pll_0002(
 		altpll_component.port_extclk3 = "PORT_UNUSED",
 		altpll_component.self_reset_on_loss_lock = "OFF",
 		altpll_component.width_clock = 5;
-
-	// ALTPLL #(
-	// 	.BANDWIDTH_TYPE("AUTO"),
-	// 	.CLK0_DIVIDE_BY(10'd25),   // 48.000 MHz ~= 50 MHz * 24 / 25
-	// 	.CLK0_DUTY_CYCLE(6'd50),
-	// 	.CLK0_MULTIPLY_BY(10'd24),
-	// 	.CLK0_PHASE_SHIFT(1'd0),
-
-	// 	.CLK1_DIVIDE_BY(10'd25),   // 48.000 MHz  PS
-	// 	.CLK1_DUTY_CYCLE(6'd50),
-	// 	.CLK1_MULTIPLY_BY(10'd24),
-	// 	.CLK1_PHASE_SHIFT(`SDRAM_SHIFT),
-
-	// 	.CLK2_DIVIDE_BY(10'd25),   // 24.000 MHz
-	// 	.CLK2_DUTY_CYCLE(6'd50),
-	// 	.CLK2_MULTIPLY_BY(10'd12),
-	// 	.CLK2_PHASE_SHIFT(1'd0),
-
-	// 	.CLK3_DIVIDE_BY(10'd25),   // 6.000 MHz
-	// 	.CLK3_DUTY_CYCLE(6'd50),
-	// 	.CLK3_MULTIPLY_BY(10'd3),
-	// 	.CLK3_PHASE_SHIFT(1'd0),
-
-	// 	.CLK4_DIVIDE_BY(10'd25),   // 96.000 MHz
-	// 	.CLK4_DUTY_CYCLE(6'd50),
-	// 	.CLK4_MULTIPLY_BY(10'd48),
-	// 	.CLK4_PHASE_SHIFT(1'd0),
-
-	// 	.CLK5_DIVIDE_BY(10'd25),   //  96.000 MHz  PS
-	// 	.CLK5_DUTY_CYCLE(6'd50),
-	// 	.CLK5_MULTIPLY_BY(10'd48),
-	// 	.CLK5_PHASE_SHIFT(`SDRAM_SHIFT),
-
-	// 	.COMPENSATE_CLOCK("CLK0"),
-	// 	.INCLK0_INPUT_FREQUENCY(15'd20000),
-	// 	.OPERATION_MODE("NORMAL")
-
-	// ) ALTPLL (
-	// 	.ARESET(1'd0),
-	// 	.CLKENA(5'd31),
-	// 	.EXTCLKENA(4'd15),
-	// 	.FBIN(1'd1),
-	// 	.INCLK(refclk),
-	// 	.PFDENA(1'd1),
-	// 	.PLLENA(1'd1),
-	// 	.CLK({outclk_5, outclk_4, outclk_3, outclk_2, outclk_1, outclk_0}),
-	// 	.LOCKED(locked)
-	// );
 
 `endif
 

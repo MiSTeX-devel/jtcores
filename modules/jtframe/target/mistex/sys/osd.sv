@@ -139,7 +139,7 @@ reg [21:0] v_info_start_h, v_info_start_1, v_info_start_2, v_info_start_3, v_inf
 
 wire [21:0] osd_h_hdr = (info || rot) ? osd_h : (osd_h + OSD_HDR);
 
-wire [8:0] logo_h, logo_v;
+reg  [8:0] logo_h, logo_v;
 wire [2:0] logo_rgb;
 wire       logo_blank;
 reg        logo_enb;

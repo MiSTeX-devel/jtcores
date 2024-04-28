@@ -107,7 +107,7 @@ end
 `else
     // Dip switches through MRA file
     // Support for 32 bits only for now.
-    reg  [ 7:0] dsw[4];
+    reg  [ 7:0] dsw[4:1];
 
     `ifndef SIMULATION
         assign dipsw = {dsw[3],dsw[2],dsw[1],dsw[0]};
@@ -126,7 +126,7 @@ end
 `endif
 
 // Cheat
-reg [ 7:0] cheat_flags[4];
+reg [ 7:0] cheat_flags[4:1];
 assign cheat = { cheat_flags[3], cheat_flags[2], cheat_flags[1], cheat_flags[0] };
 always @(posedge clk) begin
     if( rst ) begin

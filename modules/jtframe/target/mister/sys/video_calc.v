@@ -69,7 +69,7 @@ reg  [7:0] vid_pixrep;
 reg [15:0] vid_de_h;
 reg  [7:0] vid_de_v;
 
-always @(posedge clk_vid) begin
+always @(posedge clk_vid) begin : block_1
     integer hcnt;
     integer vcnt;
     integer ccnt;
@@ -132,7 +132,7 @@ reg [31:0] vid_htime = 0;
 reg [31:0] vid_vtime = 0;
 reg [31:0] vid_pix = 0;
 
-always @(posedge clk_100) begin
+always @(posedge clk_100) begin : block_2
     integer vtime, htime, hcnt;
     reg old_vs, old_hs, old_vs2, old_hs2, old_de, old_de2;
     reg calch = 0;
@@ -168,7 +168,7 @@ always @(posedge clk_100) begin
 end
 
 reg [31:0] vid_vtime_hdmi;
-always @(posedge clk_100) begin
+always @(posedge clk_100) begin  : block_3
     integer vtime;
     reg old_vs, old_vs2;
 

@@ -101,9 +101,7 @@ module  jtframe_pll6144_0002(
 		.refclk	(refclk)
 	);
 
-
 	`else
-
 
 		`ifndef ALTERA_RESERVED_QIS
 		// synopsys translate_off
@@ -176,8 +174,13 @@ module  jtframe_pll6144_0002(
 			altpll_component.clk0_phase_shift = "0",
 			altpll_component.clk1_divide_by = 117,
 			altpll_component.clk1_duty_cycle = 50,
+		`ifdef JTFRAME_SDRAM96
+			altpll_component.clk1_multiply_by = 230,
+			altpll_component.clk1_phase_shift = "-4971",
+		`else
 			altpll_component.clk1_multiply_by = 115,
 			altpll_component.clk1_phase_shift = "5549",
+		`endif
 			altpll_component.clk2_divide_by = 234,
 			altpll_component.clk2_duty_cycle = 50,
 			altpll_component.clk2_multiply_by = 115,
@@ -240,7 +243,6 @@ module  jtframe_pll6144_0002(
 			altpll_component.port_extclk3 = "PORT_UNUSED",
 			altpll_component.self_reset_on_loss_lock = "OFF",
 			altpll_component.width_clock = 5;
-
 
 `endif
 
