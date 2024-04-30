@@ -130,7 +130,7 @@ wire clk_in2_pll_0002;
     .CLKOUT4_CASCADE      ("FALSE"),
     .COMPENSATION         ("ZHOLD"),
     .STARTUP_WAIT         ("FALSE"),
-    .DIVCLK_DIVIDE        (3),
+    .DIVCLK_DIVIDE        (1),
     .CLKFBOUT_MULT_F      (16.0),
     .CLKFBOUT_PHASE       (0.000),
     .CLKFBOUT_USE_FINE_PS ("FALSE"),
