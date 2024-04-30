@@ -143,6 +143,7 @@ module  pll_0002(
 	assign  outclk_2 = sub_wire3;
 	assign  outclk_3 = sub_wire4;
 	assign  outclk_4 = sub_wire5;
+	assign  outclk_5 = sub_wire2;	//same as outclk_1, it's PS 48 or 96 MHz depending on JTFRAME_SDRAM96 define below
 	assign  locked = sub_wire6;
 	wire  sub_wire7 = refclk;
 	wire [1:0] sub_wire8 = {sub_wire9, sub_wire7};
