@@ -782,7 +782,7 @@ module ps2_device #(parameter PS2_FIFO_BITS=5)
 );
 
 
-(* ramstyle = "logic" *) reg [7:0] fifo[1<<PS2_FIFO_BITS:1];
+(* ramstyle = "logic" *) reg [7:0] fifo[1<<PS2_FIFO_BITS-1:0];
 
 reg [PS2_FIFO_BITS-1:0] wptr;
 reg [PS2_FIFO_BITS-1:0] rptr;
