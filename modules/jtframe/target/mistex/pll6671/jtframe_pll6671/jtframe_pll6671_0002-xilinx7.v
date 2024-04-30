@@ -131,33 +131,25 @@ wire clk_in2_pll_0002;
     .COMPENSATION         ("ZHOLD"),
     .STARTUP_WAIT         ("FALSE"),
     .DIVCLK_DIVIDE        (3),
-    .CLKFBOUT_MULT_F      (51.625),
+    .CLKFBOUT_MULT_F      (16.0),
     .CLKFBOUT_PHASE       (0.000),
     .CLKFBOUT_USE_FINE_PS ("FALSE"),
-    .CLKOUT0_DIVIDE_F     (16.0),
+    .CLKOUT0_DIVIDE_F     (15.0),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
     .CLKOUT0_USE_FINE_PS  ("FALSE"),
-    .CLKOUT1_DIVIDE       (16),
+    .CLKOUT1_DIVIDE       (30),
     .CLKOUT1_PHASE        (90.000),
     .CLKOUT1_DUTY_CYCLE   (0.500),
     .CLKOUT1_USE_FINE_PS  ("FALSE"),
-    .CLKOUT2_DIVIDE       (32),
+    .CLKOUT2_DIVIDE       (60),
     .CLKOUT2_PHASE        (0.000),
     .CLKOUT2_DUTY_CYCLE   (0.500),
     .CLKOUT2_USE_FINE_PS  ("FALSE"),
-    .CLKOUT3_DIVIDE       (128),
+    .CLKOUT3_DIVIDE       (120),
     .CLKOUT3_PHASE        (0.000),
     .CLKOUT3_DUTY_CYCLE   (0.500),
     .CLKOUT3_USE_FINE_PS  ("FALSE"),
-    .CLKOUT4_DIVIDE       (8),
-    .CLKOUT4_PHASE        (0.000),
-    .CLKOUT4_DUTY_CYCLE   (0.500),
-    .CLKOUT4_USE_FINE_PS  ("FALSE"),
-    .CLKOUT5_DIVIDE       (8),
-    .CLKOUT5_PHASE        (-180.000),
-    .CLKOUT5_DUTY_CYCLE   (0.500),
-    .CLKOUT5_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (20.000))
   mmcm_adv_inst
     // Output clocks
@@ -172,8 +164,6 @@ wire clk_in2_pll_0002;
     .CLKOUT2B            (clkout2b_unused),
     .CLKOUT3             (outclk_3_pll_0002),
     .CLKOUT3B            (clkout3b_unused),
-    .CLKOUT4             (outclk_4_pll_0002),
-    .CLKOUT5             (outclk_5_pll_0002),
     .CLKOUT6             (clkout6_unused),
      // Input clock control
     .CLKFBIN             (clkfbout_buf_pll_0002),
@@ -203,10 +193,37 @@ wire clk_in2_pll_0002;
   assign reset_high = rst; 
 
   assign locked = locked_int;
-// Clock Monitor clock assigning
-//--------------------------------------
- // Output buffering
-  //-----------------------------------
+
+  wire pll_feedback;
+  PLLE2_ADV #(
+		.CLKFBOUT_MULT(8'd16),
+		.CLKIN1_PERIOD(18.7),
+		.DIVCLK_DIVIDE(1'd1),
+		.REF_JITTER1(0.01),
+    .CLKOUT0_DIVIDE       (8'd8),
+    .CLKOUT0_PHASE        (0.000),
+    .CLKOUT0_DUTY_CYCLE   (0.500),
+    .CLKOUT0_USE_FINE_PS  ("FALSE"),
+    .CLKOUT1_DIVIDE       (8'd8),
+    .CLKOUT1_PHASE        (-180.000),
+    .CLKOUT1_DUTY_CYCLE   (0.500),
+    .CLKOUT1_USE_FINE_PS  ("FALSE"),
+		.STARTUP_WAIT("FALSE")
+	) pll_0002_inst (
+		.CLKFBIN(pll_feedback),
+		.CLKIN1(outclk_0_pll_0002),
+		.PWRDWN(1'b0),
+		.RST(rst),
+		.CLKFBOUT(pll_feedback),
+		.CLKOUT0(outclk_4_pll_0002),
+		.CLKOUT1(outclk_5_pll_0002),
+		.LOCKED(locked)
+	);
+
+// Output buffering
+//-----------------------------------
+	
+	BUFG clk_bufg (.I(clkout0), .O(outclk_0));
 
   BUFG clkf_buf
    (.O (clkfbout_buf_pll_0002),
