@@ -24,7 +24,7 @@ JTFRAME_PROM_START=0x110000
 #The logo doesn't fit in small devices
 JTFRAME_OSD_NOLOGO
 
-[mister]
+[mister|mistex]
 JTFRAME_CREDITS
 JTFRAME_CREDITS_PAGES=1
 JTFRAME_ARX=5

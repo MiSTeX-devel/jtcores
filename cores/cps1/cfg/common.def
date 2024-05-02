@@ -38,7 +38,7 @@ CORE_OSD=O5,Turbo,Off,On;
 NOCREDITS
 JTFRAME_OSD_NOCREDITS
 
-[mister]
+[mister|mistex]
 JTFRAME_OSD_NOLOAD
 CORE_OSD=OD,Turbo,Off,On;
 

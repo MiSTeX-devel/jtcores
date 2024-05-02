@@ -65,7 +65,7 @@ VRAMW=16
 # OSD options
 JTFRAME_OSD_TEST
 
-[mister]
+[mister|mistex]
 JTFRAME_OSD_NOLOAD
 #Do not enable JTFRAME_CHEAT unless a proper cheat.hex file exists
 #or it will break the core

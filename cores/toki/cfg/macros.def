@@ -37,7 +37,7 @@ JTFRAME_SKIP
 # and missing .toml file for now
 JTFRAME_SKIP
 
-[mister]
+[mister|mistex]
 # not meeting STA yet. See issue #605 and #606
 JTFRAME_NOSTA
 JTFRAME_ARX=4

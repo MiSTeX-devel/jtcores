@@ -27,7 +27,7 @@ OBJ_START        = 0x098000
 MCU_START        = 0x118000
 JTFRAME_PROM_START=0x11C000
 
-[mister]
+[mister|mistex]
 JTFRAME_ARX=5
 JTFRAME_ARY=4
 

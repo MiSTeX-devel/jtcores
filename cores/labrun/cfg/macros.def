@@ -17,7 +17,7 @@ JTFRAME_DIPBASE=8
 # DIP base is less than 13
 JTFRAME_OSD_NOCREDITS
 
-[mister]
+[mister|mistex]
 JTFRAME_OSD_NOLOAD
 JTFRAME_ARX=4
 JTFRAME_ARY=3

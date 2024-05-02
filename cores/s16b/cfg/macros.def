@@ -39,5 +39,5 @@ JTFRAME_PROM_START=0x440000
 # Redefine memory size
 VRAMW=19
 
-# [mister]
+# [mister|mistex]
 # JTFRAME_IOCTL_RD=75777

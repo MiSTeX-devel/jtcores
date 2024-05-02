@@ -15,7 +15,7 @@ PROM_START =0x228000
 
 JTFRAME_CREDITS
 
-[mister]
+[mister|mistex]
 # The second analogue stick
 # can be used in MiSTer to control
 # the player orientation. This
