@@ -97,7 +97,7 @@ reg         inzone, hs_l, done, busy_l, skip;
 reg  [ 8:0] ydiff, y, vlatch;
 reg  [ 7:0] scan_obj, lut_obj, lut_dst;
 reg  [ 6:0] ydf;
-wire        flip = 0, busy_g;
+wire        flip = 0, busy_g = 0;
 
 
 assign oram_addr = !dma_bsy ? { 3'b110, `ifdef NOLUTFB
