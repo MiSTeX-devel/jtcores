@@ -118,7 +118,6 @@ z80_cs u_z80cs(
 //
 // Decypher z80 ROM 8.m3
 //
-reg [15:0] decrypt_rom_addr;
 wire [7:0] decrypt_rom_data;
 wire       decrypt_rom_ok;
 reg        decrypt_rom_cs_seibu;
@@ -128,6 +127,7 @@ wire       z80_mreq_n;
 wire       z80_wait_n;
 
 sei80bu u_sei80bu(
+  .clk(clk48),
   .z80_rom_addr({3'd0, z80_rom_addr}),
   .z80_rom_data(z80_rom_data),
   .z80_rom_ok(z80_rom_ok), 
@@ -407,14 +407,20 @@ jtopl2   u_YM3812(
 //2: pcmgain <= 8'h0c ;   // 75%
 //3: pcmgain <= 8'h08 ;   // 50%
 //
-wire signed [7:0] fx_volume = ~enable_psg ? 8'h00 : 
+reg [7:0] fx_volume;
+reg [7:0] fm_volume;
+
+always @(posedge clk48)  begin //posedge clk ?
+  if (clk48) begin
+   fm_volume <=  ~enable_fm ? 8'h00 : 8'h10; 
+   fx_volume <=  ~enable_psg ? 8'h00 : 
                         (fxlevel == 2'h0) ? 8'h08 : 
                         (fxlevel == 2'h1) ? 8'h0c : 
                         (fxlevel == 2'h2) ? 8'h10 : 
                                             8'h20; 
+   end
+end
 
-wire signed [7:0] fm_volume = ~enable_fm ? 8'h00 :
-                                           8'h10;
 jtframe_mixer #(.W1(14)) u_mixer(
     .rst(rst),
     .clk(clk48),

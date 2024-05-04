@@ -1,6 +1,6 @@
 [global]
 # info = [ {tag="mameversion", value="0229"} ]
-mraauthor=["jotego"]
+author=["jotego"]
 platform="jtdd"
 
 [parse]
@@ -34,9 +34,6 @@ Names = [
 delete=[{names=["Unused","Unknown"]}]
 rename = [
     { name="Bonus Life", to="Bonus" },
-]
-extra=[
-    { machine="ddragon", name="PCM antialiasing", options="off,on", bits="16" }
 ]
 
 [ROM]

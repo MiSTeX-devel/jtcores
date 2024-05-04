@@ -19,7 +19,7 @@ type Args struct {
     MainOnly,PrintNames          bool
     JTbin                        bool // copy to JTbin & disable debug features
     Nodbg                        bool // do not parse games in the debug section
-    Author, URL, Rom_path        string
+    URL, Rom_path        string
     // private
     firmware_dir string
     macros       map[string]string
@@ -190,7 +190,8 @@ type DipswCfg struct {
 type Mame2MRA struct {
     Global struct {
         Info      []Info
-        Mraauthor []string
+        Author []string
+        Webpage, Twitter   string
         Platform  string // Used by the Pocket target
         Zip       struct {
             Alt string
@@ -275,4 +276,34 @@ type ParsedMachine struct {
     cloneof   bool
     def_dipsw string
     coremod   int
+}
+
+// Configure whether to parse or not a machine
+type ParseCfg struct {
+    All        bool // parse all games
+    Sourcefile []string
+    Main_setnames []string // setname to be used as the main ones to copy in mister/releases
+    Rename     []struct {
+        Setname string
+        Name    string
+    }
+    Older   int // minimum year allow to parse
+    Skip struct {
+        Selectable
+        Descriptions []string
+        Bootlegs     bool
+    }
+    Debug struct { // the games here will not be parsed if JTFRAME_RELEASE is set
+        Selectable
+    }
+    Mustbe struct { // If any of these conditions are met, the game will be parsed
+        // empty arrays or strings are not used for comparison
+        // Descriptions []string
+        // Setnames     []string
+        Machines []string
+        Devices  []string // list of devices the game must contain to be parsed
+    }
+    Parents []struct {
+        Name, Description string
+    }
 }
