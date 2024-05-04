@@ -289,6 +289,7 @@ generate
         assign SDRAM_CLK   = clk48sh;
         `endif
     end else begin
+        `ifdef ALTERA
         altddio_out
         #(
             .extend_oe_disable("OFF"),
@@ -313,6 +314,23 @@ generate
             .sclr(1'b0),
             .sset(1'b0)
         );
+        `endif
+        `ifdef XILINX
+        ODDR
+        #(
+            .DDR_CLK_EDGE("OPPOSITE_EDGE"),
+            .INIT(1'b0),
+            .SRTYPE("SYNC")
+        )
+        sdramclk_ddr
+        (
+            .C(clk_rom),
+            .Q(SDRAM_CLK),
+            .CE(1'b1), // 1-bit clock enable input
+            .D1(1'b0), // 1-bit data input (positive edge)
+            .D2(1'b1) // 1-bit data input (negative edge)
+        );
+        `endif
     end
 endgenerate
 
