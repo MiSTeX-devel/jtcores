@@ -86,10 +86,10 @@ always @(posedge clk) begin
 end
 
 always @(posedge clk) begin
-    if( header && prog_we ) begin
-        if( prog_addr[4:0]==5'h11 ) fd1094_en <= prog_data[0];
-        if( prog_addr[4:0]==5'h13 ) mcu_en    <= prog_data[0];
-        if( prog_addr[4:0]==5'h18 ) game_id   <= prog_data;
+    if( header && ioctl_wr ) begin
+        if( ioctl_addr[4:0]==5'h11 ) fd1094_en <= ioctl_dout[0];
+        if( ioctl_addr[4:0]==5'h13 ) mcu_en    <= ioctl_dout[0];
+        if( ioctl_addr[4:0]==5'h18 ) game_id   <= ioctl_dout;
     end
 end
 
@@ -97,8 +97,8 @@ always @(*) begin
     xa = 0;
     xa[VRAMW-1:1] = { ram_cs, main_addr[VRAMW-2:1] }; // RAM is mapped up
     // Mask RAM address
-    if( ram_cs  ) xa[VRAMW-2:14]=0; // only 16kB for RAM
-    if( vram_cs ) xa[VRAMW-2:16]=0;
+    if( ram_cs  ) xa[VRAMW-2:14]=0; // 16kB for RAM
+    if( vram_cs ) xa[VRAMW-2:16]=0; // 64kB for VRAM
 end
 
 /* xxxverilator tracing_off */
